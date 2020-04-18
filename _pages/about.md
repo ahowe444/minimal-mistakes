@@ -8,8 +8,7 @@ toc: false
 
 <p>I am a computer science major originally from Saratoga Springs, NY.
 I double major in Applied Math and Statistics and minor in linguistics.
-I have done research in Health Informatics and in child language acquisition.
-.</p>
+I have done research in Health Informatics and in child language acquisition.</p>
 
 <h2>Interests</h2>
 
