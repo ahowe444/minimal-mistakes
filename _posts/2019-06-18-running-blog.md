@@ -1,16 +1,10 @@
 ---
 title: "Running Log 6/16/2019"
-layout: post
-date: 2019-06-16 13:34
-image: ../assets/images/carbogain.jpg
-headerImage: true
-tag:
-- running
-- log
-star: false
-category: blog
-author: willhowe
-description: Summer Training Outlook 
+categories:
+  - Running
+tags:
+  - running
+  - blog
 ---
 
 ## My Plan for Summer 2k19
