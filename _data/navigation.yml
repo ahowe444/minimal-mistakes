@@ -1,9 +1,11 @@
 # main links
 main:
-  - title: "Resume"
-    url: /assets/Will_Howe_Resume_March.pdf
   - title: "About"
     url: https://ahowe444.github.io/minimal-mistakes/about/
+  - title: "Resume"
+    url: /assets/Will_Howe_Resume_March.pdf
+  - title: "Projects"
+    url: https://ahowe444.github.io/minimal-mistakes/projects/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
