@@ -4,7 +4,7 @@ title: "Projects"
 --- 
  
 ## Posters
- -Nguyen, A., Howe, W., & Legendre, G. (2020). English-speaking children’s acquisition of wh-in-situ.
+ - Nguyen, A., Howe, W., & Legendre, G. (2020). English-speaking children’s acquisition of wh-in-situ.
  Poster at Generative Approaches to Language Acquisition North America 6. Reykjavík, Iceland. [ \[AcqLab\] ](https://sites.krieger.jhu.edu/acqlab/) [ \[Summary\] ](/../assets/summer_research.pdf)
  - Howe, W., Lapinksi, M., Chute, C. (2019). Clinical Profiles: Computable Knowledge for Translational Research.
  Poster at DREAMS undergraduate poster session. [ \[Poster\] ](/../assets/Clinical_Profiles_Poster.pdf)
