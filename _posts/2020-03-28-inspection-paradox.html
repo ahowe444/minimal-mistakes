@@ -1,0 +1,116 @@
+---
+title: "The Inspection Paradox"
+layout: post
+date: 2020-03-28 18:00
+image: ../assets/images/carbogain.jpg
+headerImage: false
+tag:
+- probability
+- stochastic
+- math
+- proof
+star: false
+category: blog
+author: willhowe
+description: Proof of the inspection paradox from renewal theory.
+---
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<p style = "color:black;font-family:serif;font-size:12pt;min-width:150%;text-align:center;margin-left:-25%;">The inspection paradox, also known as the bus-stop paradox, is based on
+   observations about a bus that arrives according to the exponential distribution. The exponential distribution is
+    known to be <em>memoryless</em> 
+meaning that if the average time to wait for a bus is 15 minutes, then for any given time that you arrive at the stop
+you will wait for 15 minutes. However, if you arrive at the stop and someone already there tells you they have 
+been waiting for 15 minutes, by the memoryless property, this person will end up waiting 30 minutes for the bus!
+This seems to contradict what we know about a bus with exponentially distributed arrival times. But in truth, 
+there's no contradiction at all. You see, if you were to lay sticks down on the non-negative real number line, 
+each stick representing the waiting time between bus arrivals, then yes, <em>on average</em> each stick will be 
+15 time units long. However, if you then decide to randomly choose a stick from the number line, you will be
+    biased to picking longer sticks! A detailed proof follows below: <br> <br>
+ 
+    
+    Define \(X_{N(t) + 1}\) to be the interarrival time between the \(N(t)^{th}\) arrival and the \(N(t)+1^{th}\)
+arrival. In order to analyze the inspection paradox we need to consider the conditional probability: <br> <br>
+   \( P(X_{N(t)+1} \geq x \mid N(t)=n, S_{N(t)} = s) = P(X_{n+1} > x \mid X_{n+1} > t-s) = \) <br> <br>
+    \(\dfrac{P(X_{n+1} > x , X_{n+1} > t-s)}{P(X_{n+1} > t-s)} = 
+    \begin{cases}
+    \; \; \; 1 & x \leq t-s\\
+    \dfrac{P(X_{n+1} > x)}{P(X_{n+1} > t-s)} & x > t-s\\
+    \end{cases} \geq \bar{F(x)}\) <br> <br>
+Now we've shown that the conditional probability on the interarrival time is lower-bounded by the
+    upper-tail probability of interarrival time. Given this inequality one can integrate out conditioned upon
+    random variables which is possible since the right hand side of the inequality is a value from 0 to 1. <br> <br> 
+    Note the following fact: <br><br>
+    \[ P(X) = \int_{\mathcal{Y}} P(X \mid Y) f_{Y}(y) dy \] <br> <br> 
+    
+    Then we can integrate out the conditioned upon random variables against their densities as follows 
+    where the subscript expectation symbol performs the operation noted above:<br> <br> 
+    
+    \[ P(X_{N(t)+1} > x) = \mathbb{E}_{N(t)} \mathbb{E}_{S_{N(t)}} P(X_{N(t)+1} \geq x \mid N(t)=n, S_{N(t)} = s)  \] 
+    \[ \geq \mathbb{E}_{N(t)} \mathbb{E}_{S_{N(t)}}  \bar{F(x)} =   \bar{F(x)} \] <br> <br>
+    
+    Now we can show the expression to be true for exponentially distributed interarrival times:
+    
+     \[ P(X_{N(t)+1} > x) = \mathbb{E}_{N(t)} \mathbb{E}_{S_{N(t)}} P(X_{N(t)+1} \geq x \mid N(t)=n, S_{N(t)} = s)  \]
+    \[   = \int_{\mathcal{N}} \int_{\mathcal{S_{N}}} P(X_{N(t)+1} \geq x \mid N(t)=n, S_{N(t)} = s) f_{N(t), S_{N(t)}} dn ds\] <br> <br>
+     
+    Since \( N(t)  \) is a discrete random variable for the count process and \( S_{N(t)}\) is a continuous random variable
+    for the sum of interarrival times, the joint density above is tricky to deal with. The solution is to marginalize out \(N(t)\) and then
+    recondition on the 
+    \( N(t) \) random variable and sum over all n against its discrete probabilities: <br> <br>
+    
+    
+    \[= \sum_{n=0}^{\infty} \int_{\mathcal{S_{N}}} P(X_{N(t)+1} \geq x \mid N(t)=n, S_{N(t)} = s) f_{S_{N(t)} \mid N(t)=n}(n,s) P(N(t) = n) ds\]
+<br> <br> Now by interchangeability of summation and integral by Fubini/Tonelli Theorem, the summation can be moved outside the integral.
+  \[= \sum_{n=0}^{\infty} \int_{\mathcal{S_{N}}} P(X_{N(t)+1} \geq x \mid N(t)=n, S_{N(t)} = s)f_{S_{N(t)} \mid N(t)=n}(n,s) P(N(t) = n) ds\]<br> <br>
+    By an argument similar to the argument in the note above, the integral over all \( S_{N(t)}\) can be resolved leaving one with the following:
+    <br> <br>
+     \[= \sum_{n=0}^{\infty} P(X_{N(t)+1} \geq x \mid N(t)=n) P(N(t) = n) \]
+    \[  = P(X_{N(t)+1} > x \mid N(t) = 0)P(N(t) = 0) +  \sum_{n=1}^{\infty} P(X_{N(t)+1} \geq x \mid N(t)=n) P(N(t) = n)  \]<br><br>
+    By inspection of the first first term in the above line it is clear that when \( x < t \) the probability \( P(X_{1} > x \mid N(t) = 0) \) is 1. When \( x \geq t \)
+    the probability \( P(X_{1} > x \mid N(t) = 0) \) is the \( P(X > x - t) \): <br><br>
+    \[ P(X_1 > x \mid N(t) = 0) = \begin{cases}
+          P(X_1 > x - t) & x \geq t \\ 
+          1                 & x < t \\
+ \end{cases} = \begin{cases}
+        e^{-\lambda (x - t)} & x \geq t \\
+        1              & x < t \end{cases} \] <br> <br> 
+    Now with this first term resolved we can step back in to the summation/integral in two cases, first with \( x \geq t \):<br><br>
+    \[ x \geq t \implies t-x \geq 0 \] <br> <br>
+    \[P(X_{N(t)+1}>x)= \] 
+    \[P(X_{N(t)+1} > x \mid N(t) = 0)P(N(t) = 0)  + \sum_{n=1}^{\infty} \int_{\mathcal{S_{N}}} P(X_{N(t)+1} \geq x \mid N(t)=n, S_{N(t)} = s) f_{S_{N(t)} \mid N(t)=n}(s) P(N(t) = n) ds \]
+    \[=  e^{-\lambda (x-t)} e^{-\lambda t} + \sum_{n=1}^{\infty} \int_{\mathcal{S_{N}}}\dfrac{e^{-\lambda x}}{e^{-\lambda (t-s)}} f_{S_{N(t)} \mid N(t)=n}(s) P(N(t) = n) ds \]   <br> <br>
+    Side Note: \( f_{S_{N(t)} \mid N(t)=n}(n,s) \) is the density of the maximum of n independent, identically distributed
+    uniform (0,t) random variables which can be found as follows: <br> <br>
+    \[P(Z < z) = P(U_1 < z, U_2 < z, ... U_n < z) = F_U (z)^n \]
+    \[f_Z (z) = n (\dfrac{z}{t})^{n-1} \dfrac{1}{t} \mathbb{I}_{0,t}(z) \] <br> <br>
+     \[=  e^{-\lambda (x-t)} e^{-\lambda t} + \sum_{n=1}^{\infty} \int_{\mathcal{S_{N}}}\dfrac{e^{-\lambda x}}{e^{-\lambda (t-s)}}n (\dfrac{s}{t})^{n-1} \dfrac{1}{t} \dfrac{(\lambda t)^n e^{-\lambda t}}{n!} ds \]
+     \[=  e^{-\lambda x} + \sum_{n=1}^{\infty} \int_{\mathcal{S_{N}}}\dfrac{e^{-\lambda x}}{e^{\lambda s}} s^{n-1} \dfrac{\lambda^n}{(n-1)!} ds \]
+       \[=  e^{-\lambda x} + \int_{\mathcal{S_{N}}}\dfrac{e^{-\lambda x}}{e^{\lambda s}} \lambda \sum_{n=1}^{\infty}\dfrac{(\lambda s)^{n-1}}{(n-1)!} ds \]
+    \[=  e^{-\lambda x} + \int_{\mathcal{S_{N}}}\dfrac{\lambda e^{-\lambda x}}{e^{\lambda s}} e^{\lambda s} \mathbb{I}_{\{0 < s < t\}}(s) ds \]
+     \[=  e^{-\lambda x} + \int_{0}^{t} \lambda e^{-\lambda x} ds = e^{-\lambda x} + e^{-\lambda x} (\lambda t - 0) = e^{-\lambda x}(1+\lambda t) \]<br><br>
+    
+    Now we'll the case of \(x < t \implies 0 < t-x < t \) which means we must integrate s from 0 to t-x with the first factor in the integrand 
+                                                      being 1. Then when we integrate from t-x to t, we change to using the integrand from the previous 
+                                                      computation so that we can simply copy the result from before, but change the limits of integration. This is
+                                                      determined by the piecewise function for the original conditional probability above. <br><br>
+     \[P(X_{N(t)+1}>x)= \] 
+    \[P(X_{N(t)+1} > x \mid N(t) = 0)P(N(t) = 0)  + \sum_{n=1}^{\infty} \int_{\mathcal{S_{N}}} P(X_{N(t)+1} \geq x \mid N(t)=n, S_{N(t)} = s) f_{S_{N(t)} \mid N(t)=n}(s) P(N(t) = n) ds \]
+     \[=  1 * e^{-\lambda t} + \sum_{n=1}^{\infty} \int_{s=0}^{t-x}1*n (\dfrac{s}{t})^{n-1} \dfrac{1}{t} \dfrac{(\lambda t)^n e^{-\lambda t}}{n!}ds  + \int_{s=t-x}^t \lambda e^{-\lambda x} ds   \]
+      \[=e^{-\lambda t} + \sum_{n=1}^{\infty} \int_{s=0}^{t-x} s^{n-1} \dfrac{(\lambda)^n e^{-\lambda t}}{(n-1)!}ds  + \int_{s=t-x}^t \lambda e^{-\lambda x} ds   \]
+     \[=e^{-\lambda t} + \int_{s=0}^{t-x} \lambda e^{-\lambda t} \sum_{n=1}^{\infty} \dfrac{(\lambda)^{n-1} s^{n-1}}{(n-1)!}ds  + \lambda x e^{-\lambda x}  \]
+         \[=e^{-\lambda t} + \int_{s=0}^{t-x} \lambda e^{-\lambda t} e^{\lambda s} ds  + \lambda x e^{-\lambda x}  \]
+      \[=e^{-\lambda t} +  (e^{-\lambda t}) e^{\lambda s}\Big|_{s=0}^{t-x}  + \lambda x e^{-\lambda x}  \]
+          \[=e^{-\lambda t} +  (e^{-\lambda t}) (e^{\lambda (t-x)} - 1)  + \lambda x e^{-\lambda x}  \]
+     \[=e^{-\lambda x}  + \lambda x e^{-\lambda x}  \]
+    \[=e^{-\lambda x}(1+\lambda x)  \]<br><br>
+    
+    Finally, combining the two cases, we can write the distribution as the following:<br><br>
+    \[\mathbb{P}\{X_{N(t)+1} > x\} = \begin{cases}
+    e^{-\lambda x}(1 + \lambda t) & x \geq t \\
+    e^{-\lambda x}(1 + \lambda x) & x < t \\  \end{cases} \geq \bar{F}(x) = e^{-\lambda x} \]
+    
+   
+    Source: [<a href="http://www.ams.jhu.edu/~fill/">Professor J. Fill</a>, TA Ao Sun, Stochastic Processes @ JHU]
+
+    </p>
