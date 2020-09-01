@@ -102,21 +102,25 @@ author:
     - label: "whowe1@jhu.edu"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:whowe1@jhu.edu
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
+    #- label: "Website"
+    #  icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/ahowe444"
+    #- label: "Twitter"
+    #  icon: "fab fa-fw fa-twitter-square"
+    #  url: "https://twitter.com/ahowe444"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       url: "https://www.facebook.com/ahowe444/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/ahowe444"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
+   # - label: "Instagram"
+     # icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
+     - label: "Google Scholar"
+       icon: "ai ai-google-scholar-square ai-fw"
+       url: "https://scholar.google.com/citations?user=zkog5ucAAAAJ&hl=en"
+       
 
 # Site Footer
 footer:
