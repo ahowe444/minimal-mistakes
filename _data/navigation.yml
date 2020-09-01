@@ -2,8 +2,6 @@
 main:
   - title: "About"
     url: https://ahowe444.github.io/willh/about/
-  - title: "Resume"
-    url: /assets/Will_Howe_Resume_March.pdf
   - title: "Projects"
     url: https://ahowe444.github.io/willh/projects/
   - title: "Posts"
