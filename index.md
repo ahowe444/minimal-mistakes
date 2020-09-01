@@ -1,6 +1,5 @@
 ---
 layout: single
-permalink: /about/
 title: "About"
 excerpt: "Bio."
 toc: false
