@@ -8,8 +8,7 @@ toc: false
 
 
 <p>I am a computer science major originally from Saratoga Springs, NY.
-I double major in Applied Math and Statistics and minor in linguistics.
-I have done research in Health Informatics and in child language acquisition.</p>
+I double major in Applied Math and Statistics and minor in linguistics.</p>
 
 <h2>Interests</h2>
 
@@ -25,4 +24,5 @@ I have done research in Health Informatics and in child language acquisition.</p
 	<li><a href="https://www.tfrrs.org/athletes/6544325/Johns_Hopkins/Will_Howe.html">TFFRS - My College XC/TF times</a></li>
 	<li><a href="https://www.goodreads.com/user/show/4739295-will">Goodreads</a></li>
   <li><a href="https://www.youtube.com/user/RWHsuzuki44/videos?view_as=subscriber">My Youtube Page</a></li>
+  <li><a href="https://scholar.google.com/citations?user=zkog5ucAAAAJ&hl=en">Google Scholar</a></li>
 </ul>
